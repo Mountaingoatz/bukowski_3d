@@ -1,0 +1,34 @@
+[tool.poetry]
+name = "bukowski_3d"
+version = "0.3.0"
+description = "Explore Charles Bukowski's writings in 3D space"
+authors = ["Your Name <you@example.com>"]
+packages = [{include = "bukowski_3d"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+numpy = "*"
+pandas = "*"
+scikit-learn = "*"
+plotly = "*"
+jupyter = "*"
+streamlit = "*"
+openai = "*"
+gradio = "*"
+
+[tool.poetry.scripts]
+bukowski-3d = "bukowski_3d.main:main"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.4.1"
+sphinx = "*"
+mkdocs = "*"
+
+
+[tool.poetry.group.docs.dependencies]
+mkdocstrings = {extras = ["python"], version = "^0.29.1"}
+mkdocs-material = "^9.6.15"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

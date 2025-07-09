@@ -1,0 +1,9 @@
+site_name: Bukowski 3D
+docs_dir: docs_mkdocs
+nav:
+  - Home: index.md
+  - API: api.md
+  - Usage: usage.md
+plugins:
+  - search
+  - mkdocstrings
