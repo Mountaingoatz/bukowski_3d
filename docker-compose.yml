@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  # Streamlit web application
+  streamlit:
+    build: .
+    ports:
+      - "8501:8501"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+    volumes:
+      - ./output:/app/output
+    command: ["streamlit"]
+    profiles:
+      - web
+
+  # Gradio web application
+  gradio:
+    build: .
+    ports:
+      - "7860:7860"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+    volumes:
+      - ./output:/app/output
+    command: ["gradio"]
+    profiles:
+      - web
+
+  # Command line interface
+  cli:
+    build: .
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+    volumes:
+      - ./output:/app/output
+    command: ["cli"]
+    profiles:
+      - cli
+
+  # Development environment with hot reload
+  dev:
+    build: .
+    ports:
+      - "8501:8501"
+      - "7860:7860"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+    volumes:
+      - .:/app
+      - ./output:/app/output
+    command: ["streamlit"]
+    profiles:
+      - dev
